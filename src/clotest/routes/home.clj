@@ -4,6 +4,7 @@
             [ring.util.http-response :refer [ok]]
             [clojure.java.io :as io]
 
+            [selmer.parser :refer [render-file]]
             [clotest.controller.controller :as ctl]))
 
 (defn home-page []
@@ -13,9 +14,14 @@
 (defn about-page []
   (layout/render "about.html"))
 
+(defn index-page []
+  (render-file "index.html" {:name "index name" :items (range 10)}))
+
 (defroutes home-routes
   (GET "/" [] (home-page))
   (GET "/about" [] (about-page))
-  (GET "/testdb" [] (ctl/test-db)))
+
+  (GET "/testdb" [] (ctl/test-db))
+  (GET "/testindex" [] (index-page)))
 
 

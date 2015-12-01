@@ -31,11 +31,29 @@
   :main clotest.core
 
   :plugins [[lein-environ "1.0.0"]
-            [lein-ancient "0.6.5"]]
+            [lein-ancient "0.6.5"]
+            [lein-cljsbuild "1.1.1"]]            ;ClojureScript
+  :resource-paths ["resources" "target/cljsbuild"]
+  :cljsbuild
+  {:builds {:app {:source-paths ["src-cljs"]
+                  :compiler {:output-to     "target/cljsbuild/public/js/app.js"
+                             :output-dir    "target/cljsbuild/public/js/out"
+                             :source-map    true
+                             :externs       ["react/externs/react.js"]
+                             :optimizations :none
+                             :main "<app>.core"
+                             :asset-path "/js/out"
+                             :pretty-print  true}}}}
   :profiles
   {:uberjar {:omit-source true
              :env {:production true}
-             :aot :all}
+             :aot :all
+             :hooks ['leiningen.cljsbuild]
+             :cljsbuild {:jar true
+                         :builds {:app
+                                  {:compiler
+                                   {:optimizations :advanced
+                                    :pretty-print false}}}}}
    :dev           [:project/dev :profiles/dev]
    :test          [:project/test :profiles/test]
    :project/dev  {:dependencies [[ring/ring-mock "0.2.0"]

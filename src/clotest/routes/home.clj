@@ -2,7 +2,9 @@
   (:require [clotest.layout :as layout]
             [compojure.core :refer [defroutes GET]]
             [ring.util.http-response :refer [ok]]
-            [clojure.java.io :as io]))
+            [clojure.java.io :as io]
+
+            [clotest.controller.controller :as ctl]))
 
 (defn home-page []
   (layout/render
@@ -13,6 +15,7 @@
 
 (defroutes home-routes
   (GET "/" [] (home-page))
-  (GET "/about" [] (about-page)))
+  (GET "/about" [] (about-page))
+  (GET "/testdb" [] (ctl/test-db)))
 
 

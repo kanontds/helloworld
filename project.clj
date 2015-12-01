@@ -19,7 +19,10 @@
                  [bouncer "0.3.3"]
                  [prone "0.8.2"]
                  [org.clojure/tools.nrepl "0.2.10"]
-                 [org.immutant/web "2.0.2"]]
+                 [org.immutant/web "2.0.2"]
+
+                 [lib-noir "0.8.4"]                                          ;[noir.response :as resp] 依赖包
+                 ]
 
   :min-lein-version "2.0.0"
   :uberjar-name "clotest.jar"

@@ -3,6 +3,11 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title>My First Template</title>
+    <script>
+        function myfirstFun(){
+            document.getElementById("demo1").innerHTML="My first Javasrcipt Function.";
+        }
+    </script>
 </head>
 <body>
 <h2>Hello {{name}}</h2>
@@ -11,5 +16,47 @@
     <li> {{item}} </li>
     {% endfor %}
 </ul>
+
+<h2>1.1、第一个javascript代码</h2>
+<script>
+    document.write("<h1>This is a heading</h1>");
+    document.write("<p>This is a paragraph</p>");
+
+    function bodyFun(){
+        document.getElementById("demo1").innerHTML="This is in the Body's javascript Function";
+    }
+</script>
+
+<h2>2.1、javascript 函数</h2>
+<p id="demo1">A Paragraph.</p>
+<button type="button" onclick="myfirstFun()">函数按钮</button>
+
+<h2>2.2、javacsript body函数</h2>
+<button type="button" onclick="bodyFun()">body函数</button>
+
+<h2>2.3、引用外部的javascript函数</h2>
+<p><b>注释：</b>引用外部的javascript文件，调用文件里面的js代码</p>
+<p id="demo2">我将被外面的js改变掉</p>
+<button type="button" onclick="outjsFun()">外面的js</button>
+<script type="text/javascript" src="js/testoutjs.js"></script>  //js文件引用路径问题
+
+<h2>3.1、使用javascript访问HTML元素，并改变其内容</h2>
+<p id="demo3">This content will be changge.</p>
+<script>
+    document.getElementById("demo3").innerHTML="This is change content!!! And the origin content can't read."
+</script>
+<h2>3.2、document.write()输出HTML标签内容</h2>
+<script>
+    document.write("<p>这是javascript输出来的</p>")
+</script>
+
+<h2>3.3 document.write()注意事项</h2>
+<p>如果页面加载完再执行document.write()函数，会覆盖整个页面内容</p>
+<button type="button" onclick="writeFun()">write函数</button>
+<script>
+    function  writeFun(){
+        document.write("document中write函数延后执行会覆盖已经加载好了的页面");
+    }
+</script>
 </body>
 </html>

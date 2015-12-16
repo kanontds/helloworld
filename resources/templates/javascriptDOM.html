@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>JavaScript DOM</title>
+</head>
+<body>
+<h2>1、JavaScript DOM获取标签内容</h2>
+<h3>1.1、通过id获取内容</h3>
+<p id="dom1">Hello World!</p>
+<p>通过getElementById方法获取内容</p>
+<script>
+    x=document.getElementById("dom1");
+    document.write('<p>id="dom1"的段落文本内容是：'+ x.innerHTML + '</p>');
+</script>
+
+<h3>1.2、通过标签获取内容</h3>
+<div id="dom2">
+    <p>The Dom is very useful!</p>
+    <p>通过getElementsByTagName方法获取内容</p>
+</div>
+
+<script>
+    var x=document.getElementById("dom2");
+    var y= x.getElementsByTagName("p");
+    document.write('id为"dom2"的div中第一个p元素的内容为：'+y[0].innerHTML);
+</script>
+<b><p style="color: chocolate">注意：通过标签查找HTML元素在IE 5、6、7、8中无效</p></b>
+
+<h2>2、DOM-改变HTML</h2>
+<h3>2.1、document.write()直接改变输出内容</h3>
+<script>
+    document.write(Date());
+</script>
+<b><p style="color: chocolate">注意：绝不要使用在文档加载之后使用 document.write()。这会覆盖该文档。</p></b>
+
+<h3>2.2、innerHTML属性改变HTML内容</h3>
+<p id="dom2-1">Hello World!</p>
+<script>
+    document.getElementById("dom2-1").innerHTML="New test!";
+</script>
+
+<h3>2.3、改变HTML的属性</h3>
+<img id="dom2-2" style="width: 200px " src="" />
+<script>
+    document.getElementById("dom2-2").src="img/ndxsh.jpg"
+</script>
+<br />
+<input type="button" value="隐藏" onclick="document.getElementById('dom2-2').style.visibility='hidden'"/>
+<input type="button" value="显示" onclick="document.getElementById('dom2-2').style.visibility='visible'"/>
+
+<h2 id="dom3">3、DOM-改变CSS</h2>
+<p id="dom3-1">Hello Dom-改变元素的颜色、字体、大小</p>
+<script>
+    document.getElementById("dom3-1").style.color="blue";
+    document.getElementById("dom3-1").style.fontFamily="Arial";
+    document.getElementById("dom3-1").style.fontSize="large";
+</script>
+<button type="button" onclick="document.getElementById('dom3').style.color='brown'">改变标题颜色</button>
+
+<h2>4、DOM-时间</h2>
+
+</body>
+</html>

@@ -17,11 +17,15 @@
 (defn index-page []
   (render-file "index.html" {:name "index name" :items (range 10)}))
 
+(defn dom-page []
+  (layout/render "javascriptDOM.html"))
+
 (defroutes home-routes
   (GET "/" [] (home-page))
   (GET "/about" [] (about-page))
 
   (GET "/testdb" [] (ctl/test-db))
-  (GET "/testindex" [] (index-page)))
+  (GET "/testindex" [] (index-page))
+  (GET "/learndom" [] (dom-page)))
 
 

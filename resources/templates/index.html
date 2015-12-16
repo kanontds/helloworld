@@ -2,10 +2,33 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title>My First Template</title>
+    <title>My First Template of JavaScript</title>
     <script>
         function myfirstFun(){
             document.getElementById("demo1").innerHTML="My first Javasrcipt Function.";
+        }
+        function myFun141(){
+            var txt="";
+            try{
+                addlert("Welcome Guest!");
+            }catch(err){
+                txt="Try 一段代码是否有错误。\n\n";
+                txt+="错误描述："+err.message + "\n\n";
+                txt+="点击确定继续。\n\n";
+                alert(txt);
+            }
+        }
+        function myFun142(){
+            try{
+                var x = document.getElementById("demo142").value;
+                if(x=="")       throw "值为空";
+                if(isNaN(x))    throw "值不是数字";
+                if(x>10)        throw "值太大";
+                if(x<5)         throw "值太小";
+            }catch (err){
+                var y = document.getElementById("demo143");
+                y.innerHTML="错误："+ err + "。";
+            }
         }
     </script>
 </head>
@@ -50,7 +73,7 @@
     document.write("<p>这是javascript输出来的</p>")
 </script>
 
-<h2>3.3 document.write()注意事项</h2>
+<h2>3.3、 document.write()注意事项</h2>
 <p>如果页面加载完再执行document.write()函数，会覆盖整个页面内容</p>
 <button type="button" onclick="writeFun()">write函数</button>
 <script>
@@ -58,5 +81,274 @@
         document.write("document中write函数延后执行会覆盖已经加载好了的页面");
     }
 </script>
+
+<h2>4.1、JavaScript 代码块一起执行</h2>
+<p id="demo41">This is a paragraph</p>
+<div id="demo42">I am a div</div>
+<p><button type="button" onclick="Func41()">JS代码块</button></p>
+<script>
+    function Func41(){
+        document.getElementById("demo41").innerHTML="First change content!!";
+        document.getElementById("demo42").innerHTML="Second change content!";
+    }
+</script>
+
+<h2>4.2、JavaScript 对大小写敏感</h2>
+<p>Function 和 function两个是不同的；变量myvar和Myvar也是不同的。</p>
+<h2>4.3、 JavaScript 会忽略多余的空格</h2>
+<p>var name="Hello" 和 var name = "Hello" 代码是等价的</p>
+<h2>4.4、在文本字符串种使用反斜杠（\）可以对代码进行换行</h2>
+<script>document.write("Hello \
+                World!!!")</script>
+<p>代码为：document.write("Hello \
+    World!!!")</p>
+
+<h2>5、Javascript 注释</h2>
+<p>JavaScript 单行注释为"//"</p>
+<p>JavaScript 多行注释/*  */</p>
+
+<h2>6、变量</h2>
+<script>
+    var pi=3.14;
+    var name="Bill Gates";
+    var answer='Yes I am!';
+    document.write(pi + "<br>");
+    document.write(name + "<br>");
+    document.write(answer + "<br>");
+</script>
+<p>声明的变量未赋值，默认为undefined，赋值以后再声明，变量值为原来的值</p>
+<h3>范例：</h3>
+<p>假设 y=5，计算 x=y+2，并显示结果。</p>
+<button onclick="func6()">计算</button>
+<p id="demo6"></p>
+<script>
+    function func6(){
+        var y = 5;
+        var x = y + 2;
+        var demo6 = document.getElementById("demo6");        //变量不仅仅指数字和字符串
+        demo6.innerHTML="x=" + x;
+    }
+</script>
+
+<h2>7、JavaScript 数据类型：字符串、数字、布尔、数组、对象、Null、Undefined</h2>
+<p>极大或极小的数字可以使用科学计数法来书写：12300000：123e5；0.000123：123e-6</p>
+<h3>7.1、数组的定义和使用</h3>
+<script>
+    var i;
+    var cars = new Array();
+    cars[0] = "Audi";
+    cars[1] = "BMW";
+    cars[2] = "Volvo";
+    for(i=0;i<cars.length;i++){
+        document.write(cars[i] + "<br>");
+    }
+</script>
+
+<h3>7.2、javascript 对象的定义和使用</h3>
+<script>
+    var person ={
+        firstname :"Bill",
+        lastname :"Gates",
+        age:16
+    }
+    document.write("name:" +person.firstname+person["lastname"] + "<br/>")
+    document.write("age:" + person.age + "<br />")
+</script>
+
+<h3>Undefined和Null</h3>
+<p>Undefined 表示这个变量没有赋值，不含有任何值，null表示是变量为空值！</p>
+
+<h2>8、JavaScript 对象</h2>
+<p>JavaScript中所有事物都是对象：字符串、数字、数组、日期等等。对象是拥有属性和方法的数据。</p>
+<h3>创建JavaScript对象</h3>
+<script>
+    person2 = new Object();
+    person2.firstname = "Timy";
+    person2.lastname = "Ton";
+    person2.age = 16;
+    person2.eyecolor = "black";
+    document.write("name:"+person2.firstname+" " +person2.lastname + ",age:" + person2.age + ",eyecolor:" +person2.eyecolor)
+</script>
+
+<h2>9、JavaScript 函数</h2>
+<h3>9.1、函数的参数传递</h3>
+<p>请点击其中的一个按钮，来调用带参数的函数。</p>
+<button onclick="myFun91('Harry Potter','Wizard')">Harry Potter</button>
+<button onclick="myFun91('Bob','Builder')">Bob</button>
+<script>
+    function myFun91(name,job){
+        alert(name + "'s job is " + job);
+    }
+</script>
+<h3>9.2、带返回值的函数</h3>
+<p>执行一个函数并返回结果</p>
+<p id="demo92"></p>
+<script>
+    function myFun92(a,b){
+       return a * b;
+    }
+    document.getElementById("demo92").innerHTML="参数3，4执行结果："+myFun92(3,4);
+</script>
+
+<h2>10、JavaScript运算符</h2>
+<p>javascript 算术运算符：+、-、*、/、%、++、--</p>
+<p>javascript 赋值运算符：=、+=、-=、*=、/=、%=</p>
+<p>用于字符串连接：+，如果数字和字符串使用+连接，数字会被当作字符串来使用，如：1+"5" = "15"</p>
+<h2>11、JavaScript 比较和逻辑运算符</h2>
+<p>比较运算符：==、===（全等：值和类型）、!=、>、<、>=、<=</p>
+<p>逻辑运算符：&&(and)、||(or)、!(not)</p>
+<p>条件运算符：variablename=(condition)?value1:value2。例如：greeting = (viditor == "PRES")?"Dear President ":"Dear "</p>
+
+<h2>11、JavaScript If...Else 语句</h2>
+<p>if语句：只有当指定条件为 true 时，使用该语句来执行代码</p>
+<p>if...else语句：当条件为 true 时执行代码，当条件为 false 时执行其他代码</p>
+<p>if...else if ...else语句 :使用该语句来选择多个代码块之一来执行</p>
+<p>switch语句: 使用该语句来选择多个代码块之一来执行</p>
+<p>if语句示例，根据时间来显示对应的问候语句</p>
+<button onclick="myFun11()">问候</button>
+<p id="demo111"></p>
+<script>
+    function myFun11(){
+        var x = "";
+        var time = new Date().getHours();
+        if(time < 10){
+            x = "Good morning";
+        }else if(time < 20){
+            x = "Good day";
+        }else{
+            x = "Good evening";
+        }
+        document.getElementById("demo111").innerHTML = x;
+    }
+</script>
+
+<h3>11.2、Switch 语句</h3>
+<p>使用switch 显示今天是星期几</p>
+<button onclick="myFun112()">今天星期几</button>
+<p id="demo112">今天星期几？</p>
+<script>
+    function myFun112(){
+        var x;
+        var d = new Date().getDay();
+        switch (d){
+            case 0:
+                x="Today is Sunday.";
+                break;
+            case 1:
+                x="Today is Monday.";
+                break;
+            case 2:
+                x="Today is Tuesday.";
+                break;
+            case 3:
+                x="Today is Wednesday.";
+                break;
+            case 4:
+                x="Today is Thursday.";
+                break;
+            case 5:
+                x="Today is Friday.";
+                break;
+            case 6:
+                x="Today is Saturday.";
+                break;
+        }
+        document.getElementById("demo112").innerHTML=x;
+    }
+</script>
+
+<h2>12、JavaScript 循环</h2>
+<h3>12.1、for 循环</h3>
+<p>for方式1：for(var i=0;i<"length";i++)</p>
+<button onclick="myFun121()">for循环1</button>
+<p id="demo121"></p>
+<script>
+    function myFun121(){
+        var x="";
+        for(var i=0;i<3;i++){
+            x=x+"The For number is " + i + "<br />" ;
+        }
+        document.getElementById("demo121").innerHTML=x;
+    }
+</script>
+
+<p>for方式2：For/In循环</p>
+<p>使用for/in遍历对象的属性</p>
+<button onclick="myFun122()">for/in</button>
+<p id="demo122"></p>
+<script>
+    function myFun122(){
+        var x;
+        var txt ="";
+        var person = {fname:"Bill",lname:"Gates",age:16};
+
+        for(x in person){
+            txt = txt + x +": "+ person[x]+",";
+        }
+        document.getElementById("demo122").innerHTML = txt;
+    }
+</script>
+
+<h3>12.2、while循环</h3>
+<p>while 循环</p>
+<button onclick="myFun123()">while循环</button>
+<script>
+function myFun123(){
+    var x="",i=3;
+    while(i<6){
+        x=x+ "The While number is " + i +"<br />";
+        i++;
+    }
+    document.getElementById("demo121").innerHTML=x;
+}
+</script>
+
+<p>do while 循环</p>
+<button onclick="myFun124()">do while循环</button>
+<script>
+    function myFun124(){
+        var x="",i=7;
+        do{
+            x=x+"The do while number is " + i +"<br />";
+            i++;
+        }while(i<10);
+        document.getElementById("demo121").innerHTML=x;
+    }
+</script>
+
+<h2>13、JavaScript Break和Continue语句</h2>
+<p>break语句用于跳出循环</p>
+<p>continue用于跳过循环中的一个迭代</p>
+<button onclick="myFun131()">break跳出</button>
+<button onclick="myFun132()">continue跳过</button>
+<p id="demo131"></p>
+<script>
+    function myFun131(){
+        var x="";
+        for(var i=0;i<6;i++){
+            if(i==3) break;
+            x=x+"The break number is " + i +"<br />";
+        }
+        document.getElementById("demo131").innerHTML=x;
+    }
+    function myFun132(){
+        var x="",i;
+        for(i=0;i<6;i++){
+            if(i==3) continue;
+            x=x+"The continue number is " + i + "<br />";
+        }
+        document.getElementById("demo131").innerHTML=x;
+    }
+</script>
+
+<h2>14、JavaScript 错误捕获-Throw、Try、Catch</h2>
+<h3>14.1、try catch捕获代码错误</h3>
+<input type="button" value="try catch" onclick="myFun141()"/>
+
+<h3>14.2、Throw语句抛出错误</h3>
+<p>请输入5到10之间的数字：</p>
+<input id="demo142" type="text" />
+<button type="button" onclick="myFun142()">测试输入值</button>
+<p id="demo143"></p>
 </body>
 </html>
